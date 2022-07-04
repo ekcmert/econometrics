@@ -1,0 +1,30 @@
+{\rtf1\fs24
+\trowd\trgaph75\trleft-75\intbl\trqc\clbrdrt\brdrs\cellx1872\clbrdrt\brdrs\cellx3600
+\ql \cell\qc (1)\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx1872\cellx3600
+\trowd\trgaph75\trleft-75\trqc\clbrdrb\brdrs\cellx1872\clbrdrb\brdrs\cellx3600
+\ql VARIABLES\cell\qc growth\cell\row
+\trowd\trgaph75\trleft-75\trqc\cellx1872\cellx3600
+\ql \cell\qc \cell\row
+\ql linitgdp\cell\qc -0.290\cell\row
+\ql \cell\qc (0.201)\cell\row
+\ql educexp\cell\qc -0.585**\cell\row
+\ql \cell\qc (0.278)\cell\row
+\ql trade\cell\qc -0.000829\cell\row
+\ql \cell\qc (0.00979)\cell\row
+\ql lexpect\cell\qc 0.0343\cell\row
+\ql \cell\qc (0.0839)\cell\row
+\ql inflation\cell\qc -0.00648***\cell\row
+\ql \cell\qc (0.000835)\cell\row
+\ql unemp\cell\qc -0.0640\cell\row
+\ql \cell\qc (0.0439)\cell\row
+\ql Constant\cell\qc 11.08\cell\row
+\ql \cell\qc (8.227)\cell\row
+\ql \cell\qc \cell\row
+\ql Observations\cell\qc 341\cell\row
+\trowd\trgaph75\trleft-75\trqc\trbrdrb\brdrs\clbrdrb\brdrs\cellx1872\clbrdrb\brdrs\cellx3600
+\ql R-squared\cell\qc 0.175\cell\row
+\pard\qc
+Standard errors in parentheses\par
+*** p<0.01, ** p<0.05, * p<0.1\par
+}
