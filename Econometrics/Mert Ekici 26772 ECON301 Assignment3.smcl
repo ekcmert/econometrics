@@ -1,0 +1,217 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment3.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 4 May 2021, 19:43:17
+
+{com}. doedit "C:\Users\LENOVO\Desktop\ECON301 Assignment3 MertEkici 26772.do"
+
+. do "C:\Users\LENOVO\AppData\Local\Temp\STD3fa0_000000.tmp"
+{txt}
+{com}. //open SMOKE.DTA
+. use "C:\Users\LENOVO\Desktop\SMOKE.DTA"
+{txt}
+{com}. 
+. //browse the data, check variables
+. browse
+{txt}
+{com}. 
+. //generate smoking data (if cig > 0 then smoker)
+. g smoking = cigs > 0
+{txt}
+{com}. 
+. //find proportion of smokers by mean
+. sum smoking
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}smoking {c |}{res}        807    .3841388    .4866926          0          1
+{txt}
+{com}. 
+. //share of people lives in a state with smoke restrictions
+. sum restaurn
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 4}restaurn {c |}{res}        807    .2465923    .4312946          0          1
+{txt}
+{com}. 
+. //share of smokers based on restricted states
+. sum smoking if restaurn == 1
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}smoking {c |}{res}        199    .3065327    .4622164          0          1
+{txt}
+{com}. sum smoking if restaurn == 0
+
+{txt}    Variable {c |}        Obs        Mean    Std. Dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 5}smoking {c |}{res}        608    .4095395    .4921537          0          1
+{txt}
+{com}. 
+. //smoking linear possibility model
+. reg smoking educ age income cigpric restaurn white
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       807
+{txt}{hline 13}{c +}{hline 34}   F(6, 800)       = {res}     5.57
+{txt}       Model {c |} {res} 7.65188433         6  1.27531406   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 183.265092       800  .229081365   {txt}R-squared       ={res}    0.0401
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0329
+{txt}       Total {c |} {res} 190.916976       806  .236869698   {txt}Root MSE        =   {res} .47862
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     smoking{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-.0249073{col 26}{space 2} .0059394{col 37}{space 1}   -4.19{col 46}{space 3}0.000{col 54}{space 4} -.036566{col 67}{space 3}-.0132486
+{txt}{space 9}age {c |}{col 14}{res}{space 2}-.0036367{col 26}{space 2} .0010083{col 37}{space 1}   -3.61{col 46}{space 3}0.000{col 54}{space 4} -.005616{col 67}{space 3}-.0016574
+{txt}{space 6}income {c |}{col 14}{res}{space 2} 2.66e-06{col 26}{space 2} 1.97e-06{col 37}{space 1}    1.35{col 46}{space 3}0.176{col 54}{space 4}-1.20e-06{col 67}{space 3} 6.52e-06
+{txt}{space 5}cigpric {c |}{col 14}{res}{space 2}-.0008891{col 26}{space 2} .0036019{col 37}{space 1}   -0.25{col 46}{space 3}0.805{col 54}{space 4}-.0079595{col 67}{space 3} .0061812
+{txt}{space 4}restaurn {c |}{col 14}{res}{space 2}-.1035212{col 26}{space 2} .0398964{col 37}{space 1}   -2.59{col 46}{space 3}0.010{col 54}{space 4}-.1818353{col 67}{space 3}-.0252071
+{txt}{space 7}white {c |}{col 14}{res}{space 2}-.0125129{col 26}{space 2} .0519488{col 37}{space 1}   -0.24{col 46}{space 3}0.810{col 54}{space 4} -.114485{col 67}{space 3} .0894592
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .8834777{col 26}{space 2} .2372363{col 37}{space 1}    3.72{col 46}{space 3}0.000{col 54}{space 4} .4177986{col 67}{space 3} 1.349157
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //print the table to table.doc
+. cd "C:\Users\LENOVO\Desktop\
+{res}C:\Users\LENOVO\Desktop
+{txt}
+{com}. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO\Desktop"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. //smoking linear possibility model with quadratic age
+. reg smoking educ age agesq income cigpric restaurn white
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       807
+{txt}{hline 13}{c +}{hline 34}   F(7, 799)       = {res}     7.52
+{txt}       Model {c |} {res} 11.7949955         7  1.68499936   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 179.121981       799  .224182705   {txt}R-squared       ={res}    0.0618
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0536
+{txt}       Total {c |} {res} 190.916976       806  .236869698   {txt}Root MSE        =   {res} .47348
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     smoking{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2} -.028552{col 26}{space 2} .0059364{col 37}{space 1}   -4.81{col 46}{space 3}0.000{col 54}{space 4}-.0402049{col 67}{space 3}-.0168992
+{txt}{space 9}age {c |}{col 14}{res}{space 2} .0202079{col 26}{space 2} .0056356{col 37}{space 1}    3.59{col 46}{space 3}0.000{col 54}{space 4} .0091456{col 67}{space 3} .0312703
+{txt}{space 7}agesq {c |}{col 14}{res}{space 2} -.000264{col 26}{space 2} .0000614{col 37}{space 1}   -4.30{col 46}{space 3}0.000{col 54}{space 4}-.0003846{col 67}{space 3}-.0001435
+{txt}{space 6}income {c |}{col 14}{res}{space 2} 4.64e-07{col 26}{space 2} 2.01e-06{col 37}{space 1}    0.23{col 46}{space 3}0.818{col 54}{space 4}-3.48e-06{col 67}{space 3} 4.41e-06
+{txt}{space 5}cigpric {c |}{col 14}{res}{space 2} -.001053{col 26}{space 2} .0035634{col 37}{space 1}   -0.30{col 46}{space 3}0.768{col 54}{space 4}-.0080477{col 67}{space 3} .0059417
+{txt}{space 4}restaurn {c |}{col 14}{res}{space 2}-.1006295{col 26}{space 2} .0394733{col 37}{space 1}   -2.55{col 46}{space 3}0.011{col 54}{space 4}-.1781131{col 67}{space 3}-.0231459
+{txt}{space 7}white {c |}{col 14}{res}{space 2}-.0263784{col 26}{space 2} .0514915{col 37}{space 1}   -0.51{col 46}{space 3}0.609{col 54}{space 4} -.127453{col 67}{space 3} .0746962
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .5348554{col 26}{space 2}  .248302{col 37}{space 1}    2.15{col 46}{space 3}0.032{col 54}{space 4} .0474541{col 67}{space 3} 1.022257
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //smoking linear possibility model with logarithmic form
+. reg smoking educ age agesq lincome lcigpric restaurn white
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       807
+{txt}{hline 13}{c +}{hline 34}   F(7, 799)       = {res}     7.54
+{txt}       Model {c |} {res} 11.8361161         7  1.69087372   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  179.08086       799   .22413124   {txt}R-squared       ={res}    0.0620
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0538
+{txt}       Total {c |} {res} 190.916976       806  .236869698   {txt}Root MSE        =   {res} .47343
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     smoking{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-.0288802{col 26}{space 2} .0059008{col 37}{space 1}   -4.89{col 46}{space 3}0.000{col 54}{space 4}-.0404632{col 67}{space 3}-.0172973
+{txt}{space 9}age {c |}{col 14}{res}{space 2} .0198158{col 26}{space 2}  .005666{col 37}{space 1}    3.50{col 46}{space 3}0.000{col 54}{space 4} .0086938{col 67}{space 3} .0309378
+{txt}{space 7}agesq {c |}{col 14}{res}{space 2}-.0002598{col 26}{space 2} .0000617{col 37}{space 1}   -4.21{col 46}{space 3}0.000{col 54}{space 4}-.0003809{col 67}{space 3}-.0001387
+{txt}{space 5}lincome {c |}{col 14}{res}{space 2}  .012162{col 26}{space 2} .0257245{col 37}{space 1}    0.47{col 46}{space 3}0.636{col 54}{space 4}-.0383335{col 67}{space 3} .0626575
+{txt}{space 4}lcigpric {c |}{col 14}{res}{space 2}-.0689254{col 26}{space 2} .2041088{col 37}{space 1}   -0.34{col 46}{space 3}0.736{col 54}{space 4}-.4695782{col 67}{space 3} .3317275
+{txt}{space 4}restaurn {c |}{col 14}{res}{space 2}-.1007616{col 26}{space 2} .0394431{col 37}{space 1}   -2.55{col 46}{space 3}0.011{col 54}{space 4}-.1781859{col 67}{space 3}-.0233374
+{txt}{space 7}white {c |}{col 14}{res}{space 2}-.0256801{col 26}{space 2} .0515172{col 37}{space 1}   -0.50{col 46}{space 3}0.618{col 54}{space 4}-.1268051{col 67}{space 3} .0754449
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .6560602{col 26}{space 2}  .854962{col 37}{space 1}    0.77{col 46}{space 3}0.443{col 54}{space 4}-1.022177{col 67}{space 3} 2.334297
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //generating interaction term
+. g restwhite = restaurn*white
+{txt}
+{com}. 
+. //smoking linear possibility model, interaction variable approach
+. reg smoking educ age agesq lincome lcigpric restaurn white restwhite
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       807
+{txt}{hline 13}{c +}{hline 34}   F(8, 798)       = {res}     6.72
+{txt}       Model {c |} {res} 12.0574626         8  1.50718282   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 178.859514       798  .224134729   {txt}R-squared       ={res}    0.0632
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0538
+{txt}       Total {c |} {res} 190.916976       806  .236869698   {txt}Root MSE        =   {res} .47343
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     smoking{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 8}educ {c |}{col 14}{res}{space 2}-.0292229{col 26}{space 2} .0059109{col 37}{space 1}   -4.94{col 46}{space 3}0.000{col 54}{space 4}-.0408257{col 67}{space 3}-.0176201
+{txt}{space 9}age {c |}{col 14}{res}{space 2} .0200952{col 26}{space 2}  .005673{col 37}{space 1}    3.54{col 46}{space 3}0.000{col 54}{space 4} .0089593{col 67}{space 3}  .031231
+{txt}{space 7}agesq {c |}{col 14}{res}{space 2}-.0002628{col 26}{space 2} .0000618{col 37}{space 1}   -4.25{col 46}{space 3}0.000{col 54}{space 4}-.0003841{col 67}{space 3}-.0001415
+{txt}{space 5}lincome {c |}{col 14}{res}{space 2}  .012742{col 26}{space 2} .0257313{col 37}{space 1}    0.50{col 46}{space 3}0.621{col 54}{space 4} -.037767{col 67}{space 3}  .063251
+{txt}{space 4}lcigpric {c |}{col 14}{res}{space 2}-.0730332{col 26}{space 2} .2041523{col 37}{space 1}   -0.36{col 46}{space 3}0.721{col 54}{space 4}-.4737721{col 67}{space 3} .3277057
+{txt}{space 4}restaurn {c |}{col 14}{res}{space 2}-.1915915{col 26}{space 2} .0995478{col 37}{space 1}   -1.92{col 46}{space 3}0.055{col 54}{space 4} -.386998{col 67}{space 3}  .003815
+{txt}{space 7}white {c |}{col 14}{res}{space 2}-.0630457{col 26}{space 2} .0637796{col 37}{space 1}   -0.99{col 46}{space 3}0.323{col 54}{space 4}-.1882414{col 67}{space 3} .0621499
+{txt}{space 3}restwhite {c |}{col 14}{res}{space 2} .1074868{col 26}{space 2} .1081617{col 37}{space 1}    0.99{col 46}{space 3}0.321{col 54}{space 4}-.1048282{col 67}{space 3} .3198017
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .6995135{col 26}{space 2}  .856086{col 37}{space 1}    0.82{col 46}{space 3}0.414{col 54}{space 4}-.9809331{col 67}{space 3}  2.37996
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //clear
+. clear
+{txt}
+{com}. 
+. //open JTRAIN.DTA
+. use "C:\Users\LENOVO\Desktop\JTRAIN.DTA"
+{txt}
+{com}. 
+. //simple regression of 1988 logstrap grant
+. reg lscrap grant if year == 1988
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        54
+{txt}{hline 13}{c +}{hline 34}   F(1, 52)        = {res}     0.02
+{txt}       Model {c |} {res} .039451758         1  .039451758   {txt}Prob > F        ={res}    0.8895
+{txt}    Residual {c |} {res} 105.323208        52  2.02544631   {txt}R-squared       ={res}    0.0004
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}   -0.0188
+{txt}       Total {c |} {res}  105.36266        53  1.98797472   {txt}Root MSE        =   {res} 1.4232
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lscrap{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}grant {c |}{col 14}{res}{space 2} .0566004{col 26}{space 2} .4055519{col 37}{space 1}    0.14{col 46}{space 3}0.890{col 54}{space 4} -.757199{col 67}{space 3} .8703998
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  .408526{col 26}{space 2} .2405616{col 37}{space 1}    1.70{col 46}{space 3}0.095{col 54}{space 4}-.0741962{col 67}{space 3} .8912482
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //lscrap_1 added regression model
+. reg lscrap grant lscrap_1 if year == 1988
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        54
+{txt}{hline 13}{c +}{hline 34}   F(2, 51)        = {res}   174.94
+{txt}       Model {c |} {res} 91.9584791         2  45.9792396   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 13.4041809        51  .262827077   {txt}R-squared       ={res}    0.8728
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.8678
+{txt}       Total {c |} {res}  105.36266        53  1.98797472   {txt}Root MSE        =   {res} .51267
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lscrap{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}grant {c |}{col 14}{res}{space 2}-.2539697{col 26}{space 2} .1470311{col 37}{space 1}   -1.73{col 46}{space 3}0.090{col 54}{space 4}-.5491469{col 67}{space 3} .0412076
+{txt}{space 4}lscrap_1 {c |}{col 14}{res}{space 2} .8311606{col 26}{space 2} .0444444{col 37}{space 1}   18.70{col 46}{space 3}0.000{col 54}{space 4} .7419347{col 67}{space 3} .9203865
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}  .021237{col 26}{space 2} .0890967{col 37}{space 1}    0.24{col 46}{space 3}0.813{col 54}{space 4}-.1576321{col 67}{space 3} .2001061
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //close log file
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment3.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 4 May 2021, 19:43:28
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

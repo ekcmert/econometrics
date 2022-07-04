@@ -1,0 +1,459 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment4.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}20 May 2021, 20:43:31
+
+{com}. doedit "C:\Users\LENOVO\Desktop\Econ301 PS4 Mert Ekici 26772.do"
+
+. do "C:\Users\LENOVO\AppData\Local\Temp\STD37a0_000000.tmp"
+{txt}
+{com}. //open the article data
+. use "C:\Users\LENOVO\Desktop\card_krueger_data.dta"
+{txt}
+{com}. 
+. //change directory
+. cd "C:\Users\LENOVO"
+{res}C:\Users\LENOVO
+{txt}
+{com}. 
+. //generate full time equivalent employment variables
+. g fte = nmgrs + empft + (0.5 * emppt)
+{txt}(12 missing values generated)
+
+{com}. g fte2 = nmgrs2 + empft2 + (0.5 * emppt2)
+{txt}(14 missing values generated)
+
+{com}. 
+. 
+. //table3
+. 
+. reg fte if state==0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        77
+{txt}{hline 13}{c +}{hline 34}   F(0, 76)        = {res}     0.00
+{txt}       Model {c |} {res}          0         0           .   {txt}Prob > F        ={res}         .
+{txt}    Residual {c |} {res} 10683.4302        76   140.57145   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0000
+{txt}       Total {c |} {res} 10683.4302        76   140.57145   {txt}Root MSE        =   {res} 11.856
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         fte{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2} 23.33117{col 26}{space 2} 1.351149{col 37}{space 1}   17.27{col 46}{space 3}0.000{col 54}{space 4} 20.64012{col 67}{space 3} 26.02222
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. //extract the table
+. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. reg fte2 if state==0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        77
+{txt}{hline 13}{c +}{hline 34}   F(0, 76)        = {res}     0.00
+{txt}       Model {c |} {res}          0         0           .   {txt}Prob > F        ={res}         .
+{txt}    Residual {c |} {res}  5206.3263        76  68.5042934   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0000
+{txt}       Total {c |} {res}  5206.3263        76  68.5042934   {txt}Root MSE        =   {res} 8.2767
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        fte2{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2} 21.16558{col 26}{space 2} .9432212{col 37}{space 1}   22.44{col 46}{space 3}0.000{col 54}{space 4}   19.287{col 67}{space 3} 23.04417
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. //extract the table
+. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. reg fte if state==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       321
+{txt}{hline 13}{c +}{hline 34}   F(0, 320)       = {res}     0.00
+{txt}       Model {c |} {res}          0         0           .   {txt}Prob > F        ={res}         .
+{txt}    Residual {c |} {res}  26535.549       320  82.9235905   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0000
+{txt}       Total {c |} {res}  26535.549       320  82.9235905   {txt}Root MSE        =   {res} 9.1062
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}         fte{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2} 20.43941{col 26}{space 2} .5082607{col 37}{space 1}   40.21{col 46}{space 3}0.000{col 54}{space 4} 19.43945{col 67}{space 3} 21.43936
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. //extract the table
+. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. reg fte2 if state==1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       319
+{txt}{hline 13}{c +}{hline 34}   F(0, 318)       = {res}     0.00
+{txt}       Model {c |} {res}          0         0           .   {txt}Prob > F        ={res}         .
+{txt}    Residual {c |} {res} 27462.5725       318  86.3602909   {txt}R-squared       ={res}    0.0000
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0000
+{txt}       Total {c |} {res} 27462.5725       318  86.3602909   {txt}Root MSE        =   {res}  9.293
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        fte2{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}_cons {c |}{col 14}{res}{space 2} 21.02743{col 26}{space 2} .5203094{col 37}{space 1}   40.41{col 46}{space 3}0.000{col 54}{space 4} 20.00375{col 67}{space 3} 22.05111
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. //extract the table
+. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. //t tests for standard error of differences
+. ttest fte, by(state) reverse welch
+
+{txt}Two-sample t test with unequal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+New Jers {c |}{res}{col 12}    321{col 22} 20.43941{col 34} .5082607{col 46} 9.106239{col 58} 19.43945{col 70} 21.43936
+{txt}Pennsylv {c |}{res}{col 12}     77{col 22} 23.33117{col 34} 1.351149{col 46} 11.85628{col 58} 20.64012{col 70} 26.02222
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}    398{col 22} 20.99887{col 34} .4887136{col 46} 9.749805{col 58} 20.03808{col 70} 21.95966
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-2.891761{col 34} 1.443583{col 58}-5.756091{col 70}-.0274307
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}New Jers{txt}) - mean({res}Pennsylv{txt})                        t = {res} -2.0032
+{txt}Ho: diff = 0                             Welch's degrees of freedom = {res} 99.1457
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.0239         {txt}Pr(|T| > |t|) = {res}0.0479          {txt}Pr(T > t) = {res}0.9761
+{txt}
+{com}. ttest fte2, by(state) reverse welch
+
+{txt}Two-sample t test with unequal variances
+{hline 9}{c TT}{hline 68}
+   Group{col 10}{c |}{col 16}Obs{col 27}Mean{col 35}Std. Err.{col 47}Std. Dev.{col 59}[95% Conf. Interval]
+{hline 9}{c +}{hline 68}
+New Jers {c |}{res}{col 12}    319{col 22} 21.02743{col 34} .5203094{col 46} 9.293024{col 58} 20.00375{col 70} 22.05111
+{txt}Pennsylv {c |}{res}{col 12}     77{col 22} 21.16558{col 34} .9432212{col 46} 8.276732{col 58}   19.287{col 70} 23.04417
+{txt}{hline 9}{c +}{hline 68}
+combined {c |}{res}{col 12}    396{col 22} 21.05429{col 34} .4570134{col 46} 9.094453{col 58} 20.15581{col 70} 21.95278
+{txt}{hline 9}{c +}{hline 68}
+    diff {c |}{res}{col 22}-.1381549{col 34} 1.077213{col 58}-2.269643{col 70} 1.993333
+{txt}{hline 9}{c BT}{hline 68}
+    diff = mean({res}New Jers{txt}) - mean({res}Pennsylv{txt})                        t = {res} -0.1283
+{txt}Ho: diff = 0                             Welch's degrees of freedom = {res} 127.764
+
+    {txt}Ha: diff < 0                 Ha: diff != 0                 Ha: diff > 0
+ Pr(T < t) = {res}0.4491         {txt}Pr(|T| > |t|) = {res}0.8982          {txt}Pr(T > t) = {res}0.5509
+{txt}
+{com}. 
+. 
+. 
+. //table4
+. 
+. //generate change of employment
+. g dfte = fte2 - fte
+{txt}(26 missing values generated)
+
+{com}. 
+. //without chain & company control (available data on employment and wage)
+. reg dfte state if wage_st != . & wage_st2 != .
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       351
+{txt}{hline 13}{c +}{hline 34}   F(1, 349)       = {res}     3.66
+{txt}       Model {c |} {res} 277.813658         1  277.813658   {txt}Prob > F        ={res}    0.0566
+{txt}    Residual {c |} {res} 26504.4967       349  75.9441167   {txt}R-squared       ={res}    0.0104
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0075
+{txt}       Total {c |} {res} 26782.3104       350  76.5208869   {txt}Root MSE        =   {res} 8.7146
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        dfte{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}state {c |}{col 14}{res}{space 2} 2.276858{col 26}{space 2} 1.190436{col 37}{space 1}    1.91{col 46}{space 3}0.057{col 54}{space 4} -.064474{col 67}{space 3}  4.61819
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-1.878788{col 26}{space 2} 1.072692{col 37}{space 1}   -1.75{col 46}{space 3}0.081{col 54}{space 4}-3.988542{col 67}{space 3} .2309665
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. //with chain & company control (available data on employment and wage)
+. reg dfte state co_owned i.chain if wage_st != . & wage_st2 != . 
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       351
+{txt}{hline 13}{c +}{hline 34}   F(5, 345)       = {res}     1.44
+{txt}       Model {c |} {res} 545.889366         5  109.177873   {txt}Prob > F        ={res}    0.2108
+{txt}    Residual {c |} {res}  26236.421       345  76.0475972   {txt}R-squared       ={res}    0.0204
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0062
+{txt}       Total {c |} {res} 26782.3104       350  76.5208869   {txt}Root MSE        =   {res} 8.7205
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}        dfte{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}state {c |}{col 14}{res}{space 2} 2.281507{col 26}{space 2} 1.197044{col 37}{space 1}    1.91{col 46}{space 3}0.057{col 54}{space 4}-.0729144{col 67}{space 3} 4.635929
+{txt}{space 4}co_owned {c |}{col 14}{res}{space 2} .3729144{col 26}{space 2} 1.098762{col 37}{space 1}    0.34{col 46}{space 3}0.735{col 54}{space 4}-1.788201{col 67}{space 3}  2.53403
+{txt}{space 12} {c |}
+{space 7}chain {c |}
+kentucky ..  {c |}{col 14}{res}{space 2} .2345508{col 26}{space 2}  1.29674{col 37}{space 1}    0.18{col 46}{space 3}0.857{col 54}{space 4} -2.31596{col 67}{space 3} 2.785061
+{txt}{space 7}roys  {c |}{col 14}{res}{space 2}-2.084687{col 26}{space 2} 1.321259{col 37}{space 1}   -1.58{col 46}{space 3}0.116{col 54}{space 4}-4.683423{col 67}{space 3} .5140495
+{txt}{space 5}wendys  {c |}{col 14}{res}{space 2}-.7566441{col 26}{space 2} 1.491088{col 37}{space 1}   -0.51{col 46}{space 3}0.612{col 54}{space 4} -3.68941{col 67}{space 3} 2.176122
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2}-1.450031{col 26}{space 2}   1.2099{col 37}{space 1}   -1.20{col 46}{space 3}0.232{col 54}{space 4} -3.82974{col 67}{space 3}  .929677
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. 
+. //table7
+. 
+. //generate the meal variables
+. g lpmeal = ln(psoda + pfry + pentree)
+{txt}(23 missing values generated)
+
+{com}. g lpmeal2 = ln(psoda2 + pfry2 + pentree2)
+{txt}(34 missing values generated)
+
+{com}. g ldpmeal = lpmeal2 - lpmeal
+{txt}(54 missing values generated)
+
+{com}. 
+. 
+. //without chain & company control (available data on employment and wage )
+. reg ldpmeal state if wage_st != . & wage_st2 != . & fte != . & fte2 != .
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       317
+{txt}{hline 13}{c +}{hline 34}   F(1, 315)       = {res}     5.09
+{txt}       Model {c |} {res}  .05211232         1   .05211232   {txt}Prob > F        ={res}    0.0247
+{txt}    Residual {c |} {res} 3.22203619       315  .010228686   {txt}R-squared       ={res}    0.0159
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0128
+{txt}       Total {c |} {res} 3.27414851       316  .010361229   {txt}Root MSE        =   {res} .10114
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     ldpmeal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}state {c |}{col 14}{res}{space 2} .0325248{col 26}{space 2} .0144097{col 37}{space 1}    2.26{col 46}{space 3}0.025{col 54}{space 4} .0041734{col 67}{space 3} .0608762
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2}-.0090863{col 26}{space 2} .0129493{col 37}{space 1}   -0.70{col 46}{space 3}0.483{col 54}{space 4}-.0345643{col 67}{space 3} .0163917
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}.  
+. //without chain & company control (available data on employment and wage)
+. reg ldpmeal state co_owned i.chain if wage_st != . & wage_st2 != . & fte != . & fte2 != .
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       317
+{txt}{hline 13}{c +}{hline 34}   F(5, 311)       = {res}     6.83
+{txt}       Model {c |} {res} .323862385         5  .064772477   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.95028612       311  .009486451   {txt}R-squared       ={res}    0.0989
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0844
+{txt}       Total {c |} {res} 3.27414851       316  .010361229   {txt}Root MSE        =   {res}  .0974
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     ldpmeal{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}state {c |}{col 14}{res}{space 2} .0367495{col 26}{space 2} .0139566{col 37}{space 1}    2.63{col 46}{space 3}0.009{col 54}{space 4} .0092882{col 67}{space 3} .0642107
+{txt}{space 4}co_owned {c |}{col 14}{res}{space 2} .0005565{col 26}{space 2} .0130868{col 37}{space 1}    0.04{col 46}{space 3}0.966{col 54}{space 4}-.0251934{col 67}{space 3} .0263065
+{txt}{space 12} {c |}
+{space 7}chain {c |}
+kentucky ..  {c |}{col 14}{res}{space 2} -.007042{col 26}{space 2} .0149151{col 37}{space 1}   -0.47{col 46}{space 3}0.637{col 54}{space 4}-.0363893{col 67}{space 3} .0223053
+{txt}{space 7}roys  {c |}{col 14}{res}{space 2}-.0004594{col 26}{space 2} .0158925{col 37}{space 1}   -0.03{col 46}{space 3}0.977{col 54}{space 4}-.0317298{col 67}{space 3} .0308111
+{txt}{space 5}wendys  {c |}{col 14}{res}{space 2} .0851266{col 26}{space 2} .0174853{col 37}{space 1}    4.87{col 46}{space 3}0.000{col 54}{space 4} .0507222{col 67}{space 3} .1195309
+{txt}{space 12} {c |}
+{space 7}_cons {c |}{col 14}{res}{space 2} -.021993{col 26}{space 2} .0142773{col 37}{space 1}   -1.54{col 46}{space 3}0.124{col 54}{space 4}-.0500854{col 67}{space 3} .0060993
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. 
+. //clear to open new data
+. clear
+{txt}
+{com}. 
+. // open TRAFFIC2.DTA
+. use "C:\Users\LENOVO\Desktop\TRAFFIC2.DTA"
+{txt}
+{com}. 
+. //check variables of the data
+. browse 
+{txt}
+{com}. 
+. //regression model on prcfat with linear time trend, monthly dummy variables and wkends, unem, spdlaw, beltlaw
+. reg prcfat t wkends unem spdlaw beltlaw feb mar apr may jun jul aug sep oct nov dec
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       108
+{txt}{hline 13}{c +}{hline 34}   F(16, 91)       = {res}    14.44
+{txt}       Model {c |} {res} .764228387        16  .047764274   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} .301019769        91   .00330791   {txt}R-squared       ={res}    0.7174
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6677
+{txt}       Total {c |} {res} 1.06524816       107   .00995559   {txt}Root MSE        =   {res} .05751
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      prcfat{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 11}t {c |}{col 14}{res}{space 2}-.0022352{col 26}{space 2} .0004208{col 37}{space 1}   -5.31{col 46}{space 3}0.000{col 54}{space 4}-.0030711{col 67}{space 3}-.0013993
+{txt}{space 6}wkends {c |}{col 14}{res}{space 2} .0006259{col 26}{space 2} .0061624{col 37}{space 1}    0.10{col 46}{space 3}0.919{col 54}{space 4} -.011615{col 67}{space 3} .0128668
+{txt}{space 8}unem {c |}{col 14}{res}{space 2}-.0154259{col 26}{space 2} .0055444{col 37}{space 1}   -2.78{col 46}{space 3}0.007{col 54}{space 4}-.0264392{col 67}{space 3}-.0044127
+{txt}{space 6}spdlaw {c |}{col 14}{res}{space 2} .0670877{col 26}{space 2} .0205683{col 37}{space 1}    3.26{col 46}{space 3}0.002{col 54}{space 4} .0262312{col 67}{space 3} .1079441
+{txt}{space 5}beltlaw {c |}{col 14}{res}{space 2}-.0295053{col 26}{space 2} .0232307{col 37}{space 1}   -1.27{col 46}{space 3}0.207{col 54}{space 4}-.0756503{col 67}{space 3} .0166397
+{txt}{space 9}feb {c |}{col 14}{res}{space 2} .0008607{col 26}{space 2} .0289967{col 37}{space 1}    0.03{col 46}{space 3}0.976{col 54}{space 4}-.0567377{col 67}{space 3} .0584592
+{txt}{space 9}mar {c |}{col 14}{res}{space 2} .0000923{col 26}{space 2} .0274069{col 37}{space 1}    0.00{col 46}{space 3}0.997{col 54}{space 4}-.0543481{col 67}{space 3} .0545327
+{txt}{space 9}apr {c |}{col 14}{res}{space 2} .0582201{col 26}{space 2} .0278195{col 37}{space 1}    2.09{col 46}{space 3}0.039{col 54}{space 4} .0029601{col 67}{space 3}   .11348
+{txt}{space 9}may {c |}{col 14}{res}{space 2} .0716392{col 26}{space 2} .0276432{col 37}{space 1}    2.59{col 46}{space 3}0.011{col 54}{space 4} .0167293{col 67}{space 3} .1265492
+{txt}{space 9}jun {c |}{col 14}{res}{space 2} .1012618{col 26}{space 2} .0280937{col 37}{space 1}    3.60{col 46}{space 3}0.001{col 54}{space 4} .0454571{col 67}{space 3} .1570665
+{txt}{space 9}jul {c |}{col 14}{res}{space 2} .1766121{col 26}{space 2} .0272592{col 37}{space 1}    6.48{col 46}{space 3}0.000{col 54}{space 4}  .122465{col 67}{space 3} .2307592
+{txt}{space 9}aug {c |}{col 14}{res}{space 2} .1926117{col 26}{space 2} .0274448{col 37}{space 1}    7.02{col 46}{space 3}0.000{col 54}{space 4} .1380959{col 67}{space 3} .2471274
+{txt}{space 9}sep {c |}{col 14}{res}{space 2} .1600164{col 26}{space 2}  .028203{col 37}{space 1}    5.67{col 46}{space 3}0.000{col 54}{space 4} .1039947{col 67}{space 3} .2160381
+{txt}{space 9}oct {c |}{col 14}{res}{space 2} .1010357{col 26}{space 2} .0276702{col 37}{space 1}    3.65{col 46}{space 3}0.000{col 54}{space 4} .0460722{col 67}{space 3} .1559991
+{txt}{space 9}nov {c |}{col 14}{res}{space 2}  .013949{col 26}{space 2} .0281436{col 37}{space 1}    0.50{col 46}{space 3}0.621{col 54}{space 4}-.0419548{col 67}{space 3} .0698528
+{txt}{space 9}dec {c |}{col 14}{res}{space 2} .0092005{col 26}{space 2}  .027858{col 37}{space 1}    0.33{col 46}{space 3}0.742{col 54}{space 4} -.046136{col 67}{space 3}  .064537
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.029799{col 26}{space 2} .1029523{col 37}{space 1}   10.00{col 46}{space 3}0.000{col 54}{space 4} .8252964{col 67}{space 3} 1.234301
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //clear to open new data
+. clear
+{txt}
+{com}. 
+. // open INJURY.DTA
+. use "C:\Users\LENOVO\Desktop\INJURY.DTA"
+{txt}
+{com}. 
+. //check the data, analyze variables
+. browse
+{txt}
+{com}. 
+. //adding explanatory variables (Kentucky data)
+. reg ldurat afchnge highearn afhigh male married manuf construc head neck upextr trunk lowback lowextr occdis if ky == 1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,349
+{txt}{hline 13}{c +}{hline 34}   F(14, 5334)     = {res}    16.37
+{txt}       Model {c |} {res} 358.441793        14  25.6029852   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 8341.41206     5,334  1.56381928   {txt}R-squared       ={res}    0.0412
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0387
+{txt}       Total {c |} {res} 8699.85385     5,348  1.62674904   {txt}Root MSE        =   {res} 1.2505
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ldurat{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}afchnge {c |}{col 14}{res}{space 2} .0106274{col 26}{space 2} .0449167{col 37}{space 1}    0.24{col 46}{space 3}0.813{col 54}{space 4}-.0774276{col 67}{space 3} .0986824
+{txt}{space 4}highearn {c |}{col 14}{res}{space 2} .1757598{col 26}{space 2} .0517462{col 37}{space 1}    3.40{col 46}{space 3}0.001{col 54}{space 4} .0743161{col 67}{space 3} .2772035
+{txt}{space 6}afhigh {c |}{col 14}{res}{space 2} .2308768{col 26}{space 2} .0695248{col 37}{space 1}    3.32{col 46}{space 3}0.001{col 54}{space 4} .0945798{col 67}{space 3} .3671738
+{txt}{space 8}male {c |}{col 14}{res}{space 2}-.0979407{col 26}{space 2} .0445498{col 37}{space 1}   -2.20{col 46}{space 3}0.028{col 54}{space 4}-.1852766{col 67}{space 3}-.0106049
+{txt}{space 5}married {c |}{col 14}{res}{space 2} .1220995{col 26}{space 2} .0391228{col 37}{space 1}    3.12{col 46}{space 3}0.002{col 54}{space 4} .0454027{col 67}{space 3} .1987962
+{txt}{space 7}manuf {c |}{col 14}{res}{space 2}-.1606709{col 26}{space 2} .0409038{col 37}{space 1}   -3.93{col 46}{space 3}0.000{col 54}{space 4}-.2408591{col 67}{space 3}-.0804827
+{txt}{space 4}construc {c |}{col 14}{res}{space 2} .1101967{col 26}{space 2} .0518063{col 37}{space 1}    2.13{col 46}{space 3}0.033{col 54}{space 4} .0086352{col 67}{space 3} .2117581
+{txt}{space 8}head {c |}{col 14}{res}{space 2}-.5139003{col 26}{space 2} .1292776{col 37}{space 1}   -3.98{col 46}{space 3}0.000{col 54}{space 4}-.7673372{col 67}{space 3}-.2604634
+{txt}{space 8}neck {c |}{col 14}{res}{space 2} .2699126{col 26}{space 2} .1614899{col 37}{space 1}    1.67{col 46}{space 3}0.095{col 54}{space 4}-.0466737{col 67}{space 3} .5864988
+{txt}{space 6}upextr {c |}{col 14}{res}{space 2} -.178539{col 26}{space 2} .1011794{col 37}{space 1}   -1.76{col 46}{space 3}0.078{col 54}{space 4} -.376892{col 67}{space 3} .0198141
+{txt}{space 7}trunk {c |}{col 14}{res}{space 2} .1264514{col 26}{space 2} .1090163{col 37}{space 1}    1.16{col 46}{space 3}0.246{col 54}{space 4}-.0872651{col 67}{space 3}  .340168
+{txt}{space 5}lowback {c |}{col 14}{res}{space 2}-.0085967{col 26}{space 2} .1015267{col 37}{space 1}   -0.08{col 46}{space 3}0.933{col 54}{space 4}-.2076305{col 67}{space 3} .1904371
+{txt}{space 5}lowextr {c |}{col 14}{res}{space 2}-.1202911{col 26}{space 2} .1023262{col 37}{space 1}   -1.18{col 46}{space 3}0.240{col 54}{space 4}-.3208922{col 67}{space 3} .0803101
+{txt}{space 6}occdis {c |}{col 14}{res}{space 2} .2727118{col 26}{space 2}  .210769{col 37}{space 1}    1.29{col 46}{space 3}0.196{col 54}{space 4}-.1404816{col 67}{space 3} .6859052
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.245922{col 26}{space 2} .1061677{col 37}{space 1}   11.74{col 46}{space 3}0.000{col 54}{space 4}  1.03779{col 67}{space 3} 1.454054
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //normal version of the model (Kentucky data)
+. reg ldurat afchnge highearn afhigh if ky == 1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,626
+{txt}{hline 13}{c +}{hline 34}   F(3, 5622)      = {res}    39.54
+{txt}       Model {c |} {res} 191.071442         3  63.6904807   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  9055.9345     5,622  1.61080301   {txt}R-squared       ={res}    0.0207
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0201
+{txt}       Total {c |} {res} 9247.00594     5,625  1.64391217   {txt}Root MSE        =   {res} 1.2692
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ldurat{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}afchnge {c |}{col 14}{res}{space 2} .0076573{col 26}{space 2} .0447173{col 37}{space 1}    0.17{col 46}{space 3}0.864{col 54}{space 4}-.0800058{col 67}{space 3} .0953204
+{txt}{space 4}highearn {c |}{col 14}{res}{space 2} .2564785{col 26}{space 2} .0474464{col 37}{space 1}    5.41{col 46}{space 3}0.000{col 54}{space 4} .1634652{col 67}{space 3} .3494918
+{txt}{space 6}afhigh {c |}{col 14}{res}{space 2} .1906012{col 26}{space 2} .0685089{col 37}{space 1}    2.78{col 46}{space 3}0.005{col 54}{space 4} .0562973{col 67}{space 3} .3249051
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.125615{col 26}{space 2} .0307368{col 37}{space 1}   36.62{col 46}{space 3}0.000{col 54}{space 4} 1.065359{col 67}{space 3} 1.185871
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //extract the table
+. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. //normal version of the model (Kentucy and Michigan)
+. reg ldurat afchnge highearn afhigh if ky == 1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     5,626
+{txt}{hline 13}{c +}{hline 34}   F(3, 5622)      = {res}    39.54
+{txt}       Model {c |} {res} 191.071442         3  63.6904807   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res}  9055.9345     5,622  1.61080301   {txt}R-squared       ={res}    0.0207
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0201
+{txt}       Total {c |} {res} 9247.00594     5,625  1.64391217   {txt}Root MSE        =   {res} 1.2692
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ldurat{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}afchnge {c |}{col 14}{res}{space 2} .0076573{col 26}{space 2} .0447173{col 37}{space 1}    0.17{col 46}{space 3}0.864{col 54}{space 4}-.0800058{col 67}{space 3} .0953204
+{txt}{space 4}highearn {c |}{col 14}{res}{space 2} .2564785{col 26}{space 2} .0474464{col 37}{space 1}    5.41{col 46}{space 3}0.000{col 54}{space 4} .1634652{col 67}{space 3} .3494918
+{txt}{space 6}afhigh {c |}{col 14}{res}{space 2} .1906012{col 26}{space 2} .0685089{col 37}{space 1}    2.78{col 46}{space 3}0.005{col 54}{space 4} .0562973{col 67}{space 3} .3249051
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.125615{col 26}{space 2} .0307368{col 37}{space 1}   36.62{col 46}{space 3}0.000{col 54}{space 4} 1.065359{col 67}{space 3} 1.185871
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg ldurat afchnge highearn afhigh if mi == 1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     1,524
+{txt}{hline 13}{c +}{hline 34}   F(3, 1520)      = {res}     6.05
+{txt}       Model {c |} {res} 34.3850177         3  11.4616726   {txt}Prob > F        ={res}    0.0004
+{txt}    Residual {c |} {res} 2879.96981     1,520  1.89471698   {txt}R-squared       ={res}    0.0118
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0098
+{txt}       Total {c |} {res} 2914.35483     1,523  1.91356194   {txt}Root MSE        =   {res} 1.3765
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      ldurat{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}afchnge {c |}{col 14}{res}{space 2} .0973808{col 26}{space 2} .0847879{col 37}{space 1}    1.15{col 46}{space 3}0.251{col 54}{space 4}-.0689329{col 67}{space 3} .2636945
+{txt}{space 4}highearn {c |}{col 14}{res}{space 2} .1691388{col 26}{space 2} .1055676{col 37}{space 1}    1.60{col 46}{space 3}0.109{col 54}{space 4}-.0379348{col 67}{space 3} .3762124
+{txt}{space 6}afhigh {c |}{col 14}{res}{space 2} .1919906{col 26}{space 2} .1541699{col 37}{space 1}    1.25{col 46}{space 3}0.213{col 54}{space 4}-.1104176{col 67}{space 3} .4943988
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.412737{col 26}{space 2} .0567172{col 37}{space 1}   24.91{col 46}{space 3}0.000{col 54}{space 4} 1.301485{col 67}{space 3} 1.523989
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //extract the table
+. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. //close log file
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment4.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}20 May 2021, 20:44:21
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

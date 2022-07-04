@@ -1,0 +1,180 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment5.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}30 May 2021, 20:38:32
+
+{com}. doedit "C:\Users\LENOVO\Desktop\ECON301 PS5 Mert Ekici 26772.do"
+
+. do "C:\Users\LENOVO\AppData\Local\Temp\STD3e18_000000.tmp"
+{txt}
+{com}. //open AIRFARE.DTA
+. use "C:\Users\LENOVO\Desktop\airfare.dta"
+{txt}
+{com}. 
+. //price elasticity of air travel demand (controlling year specific effects and the route distance (ldist and  ldistsq))
+. reg lpassen lfare ldist ldistsq y98 y99 y00
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     4,596
+{txt}{hline 13}{c +}{hline 34}   F(6, 4589)      = {res}    52.48
+{txt}       Model {c |} {res} 230.557732         6  38.4262887   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 3360.12968     4,589  .732213921   {txt}R-squared       ={res}    0.0642
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0630
+{txt}       Total {c |} {res} 3590.68741     4,595  .781433605   {txt}Root MSE        =   {res} .85569
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     lpassen{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}lfare {c |}{col 14}{res}{space 2}-.5647711{col 26}{space 2} .0369644{col 37}{space 1}  -15.28{col 46}{space 3}0.000{col 54}{space 4}-.6372392{col 67}{space 3}-.4923031
+{txt}{space 7}ldist {c |}{col 14}{res}{space 2} -1.54939{col 26}{space 2} .3265076{col 37}{space 1}   -4.75{col 46}{space 3}0.000{col 54}{space 4}-2.189502{col 67}{space 3}-.9092778
+{txt}{space 5}ldistsq {c |}{col 14}{res}{space 2} .1227088{col 26}{space 2} .0247935{col 37}{space 1}    4.95{col 46}{space 3}0.000{col 54}{space 4} .0741017{col 67}{space 3}  .171316
+{txt}{space 9}y98 {c |}{col 14}{res}{space 2} .0321212{col 26}{space 2} .0357118{col 37}{space 1}    0.90{col 46}{space 3}0.368{col 54}{space 4}-.0378911{col 67}{space 3} .1021335
+{txt}{space 9}y99 {c |}{col 14}{res}{space 2}  .081651{col 26}{space 2}  .035724{col 37}{space 1}    2.29{col 46}{space 3}0.022{col 54}{space 4} .0116148{col 67}{space 3} .1516873
+{txt}{space 9}y00 {c |}{col 14}{res}{space 2} .1380369{col 26}{space 2} .0358761{col 37}{space 1}    3.85{col 46}{space 3}0.000{col 54}{space 4} .0677024{col 67}{space 3} .2083713
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 13.65144{col 26}{space 2} 1.094166{col 37}{space 1}   12.48{col 46}{space 3}0.000{col 54}{space 4} 11.50635{col 67}{space 3} 15.79653
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //fixed effects model version of the previous model
+. xtreg lpassen lfare ldist ldistsq y98 y99 y00, fe
+{p 0 6 2}{txt}note: ldist omitted because of collinearity{p_end}
+{p 0 6 2}note: ldistsq omitted because of collinearity{p_end}
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}     4,596
+{txt}Group variable: {res}id{txt}{col 49}Number of groups{col 67}={col 69}{res}     1,149
+
+{txt}R-sq:{col 49}Obs per group:
+     within  = {res}0.4507{col 63}{txt}min{col 67}={col 69}{res}         4
+{txt}     between = {res}0.0487{col 63}{txt}avg{col 67}={col 69}{res}       4.0
+{txt}     overall = {res}0.0574{col 63}{txt}max{col 67}={col 69}{res}         4
+
+{txt}{col 49}F({res}4{txt},{res}3443{txt}){col 67}={col 70}{res}   706.35
+{txt}corr(u_i, Xb){col 16}= {res}-0.3249{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     lpassen{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}lfare {c |}{col 14}{res}{space 2}-1.155039{col 26}{space 2} .0227645{col 37}{space 1}  -50.74{col 46}{space 3}0.000{col 54}{space 4}-1.199672{col 67}{space 3}-1.110406
+{txt}{space 7}ldist {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+{space 5}ldistsq {c |}{col 14}{res}{space 2}        0{col 26}{txt}  (omitted)
+{space 9}y98 {c |}{col 14}{res}{space 2} .0464889{col 26}{space 2} .0059898{col 37}{space 1}    7.76{col 46}{space 3}0.000{col 54}{space 4} .0347449{col 67}{space 3} .0582329
+{txt}{space 9}y99 {c |}{col 14}{res}{space 2} .1023612{col 26}{space 2} .0060174{col 37}{space 1}   17.01{col 46}{space 3}0.000{col 54}{space 4} .0905631{col 67}{space 3} .1141592
+{txt}{space 9}y00 {c |}{col 14}{res}{space 2} .1946548{col 26}{space 2} .0063513{col 37}{space 1}   30.65{col 46}{space 3}0.000{col 54}{space 4} .1822021{col 67}{space 3} .2071075
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 11.81677{col 26}{space 2} .1151921{col 37}{space 1}  102.58{col 46}{space 3}0.000{col 54}{space 4} 11.59092{col 67}{space 3} 12.04262
+{txt}{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+     sigma_u {c |} {res} .89829067
+     {txt}sigma_e {c |} {res} .14295339
+         {txt}rho {c |} {res}  .9753002{txt}   (fraction of variance due to u_i)
+{hline 13}{c BT}{hline 64}
+F test that all u_i=0: F({res}1148{txt}, {res}3443{txt}) = {res}141.20{col 62}{txt}Prob > F = {res}0.0000
+{txt}
+{com}. 
+. //check the relevance assumption lfare concen
+. reg lfare concen
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     4,596
+{txt}{hline 13}{c +}{hline 34}   F(1, 4594)      = {res}   236.48
+{txt}       Model {c |} {res}  42.841123         1   42.841123   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 832.253251     4,594  .181160917   {txt}R-squared       ={res}    0.0490
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0487
+{txt}       Total {c |} {res} 875.094374     4,595  .190444913   {txt}Root MSE        =   {res} .42563
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       lfare{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 6}concen {c |}{col 14}{res}{space 2}-.4915512{col 26}{space 2} .0319647{col 37}{space 1}  -15.38{col 46}{space 3}0.000{col 54}{space 4}-.5542174{col 67}{space 3}-.4288851
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 5.395503{col 26}{space 2} .0204878{col 37}{space 1}  263.35{col 46}{space 3}0.000{col 54}{space 4} 5.355337{col 67}{space 3} 5.435669
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //2SLS --> two stage version manual
+. 
+. //estimate endogeneous lfare by exogeneous variables and instrumental variable
+. reg lfare ldist ldistsq y98 y99 y00 concen
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     4,596
+{txt}{hline 13}{c +}{hline 34}   F(6, 4589)      = {res}   523.18
+{txt}       Model {c |} {res} 355.453858         6  59.2423096   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 519.640516     4,589  .113236112   {txt}R-squared       ={res}    0.4062
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.4054
+{txt}       Total {c |} {res} 875.094374     4,595  .190444913   {txt}Root MSE        =   {res} .33651
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       lfare{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}ldist {c |}{col 14}{res}{space 2}-.9016004{col 26}{space 2}  .128273{col 37}{space 1}   -7.03{col 46}{space 3}0.000{col 54}{space 4}-1.153077{col 67}{space 3}-.6501235
+{txt}{space 5}ldistsq {c |}{col 14}{res}{space 2} .1030196{col 26}{space 2} .0097255{col 37}{space 1}   10.59{col 46}{space 3}0.000{col 54}{space 4} .0839529{col 67}{space 3} .1220863
+{txt}{space 9}y98 {c |}{col 14}{res}{space 2} .0211244{col 26}{space 2} .0140419{col 37}{space 1}    1.50{col 46}{space 3}0.133{col 54}{space 4}-.0064046{col 67}{space 3} .0486533
+{txt}{space 9}y99 {c |}{col 14}{res}{space 2} .0378496{col 26}{space 2} .0140413{col 37}{space 1}    2.70{col 46}{space 3}0.007{col 54}{space 4}  .010322{col 67}{space 3} .0653772
+{txt}{space 9}y00 {c |}{col 14}{res}{space 2}   .09987{col 26}{space 2} .0140432{col 37}{space 1}    7.11{col 46}{space 3}0.000{col 54}{space 4} .0723385{col 67}{space 3} .1274015
+{txt}{space 6}concen {c |}{col 14}{res}{space 2} .3601203{col 26}{space 2} .0300691{col 37}{space 1}   11.98{col 46}{space 3}0.000{col 54}{space 4} .3011705{col 67}{space 3} .4190702
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 6.209258{col 26}{space 2} .4206247{col 37}{space 1}   14.76{col 46}{space 3}0.000{col 54}{space 4} 5.384631{col 67}{space 3} 7.033884
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //predict new lfare by the previous model
+. predict lfarehat
+{txt}(option {bf:xb} assumed; fitted values)
+
+{com}. 
+. //Main OLS model with lfare replaced with predicted lfarehat
+. reg lpassen lfarehat ldist ldistsq y98 y99 y00
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}     4,596
+{txt}{hline 13}{c +}{hline 34}   F(6, 4589)      = {res}    24.37
+{txt}       Model {c |} {res} 110.891091         6  18.4818484   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 3479.79632     4,589  .758290766   {txt}R-squared       ={res}    0.0309
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0296
+{txt}       Total {c |} {res} 3590.68741     4,595  .781433605   {txt}Root MSE        =   {res}  .8708
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     lpassen{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lfarehat {c |}{col 14}{res}{space 2}-1.776549{col 26}{space 2} .2160716{col 37}{space 1}   -8.22{col 46}{space 3}0.000{col 54}{space 4}-2.200153{col 67}{space 3}-1.352945
+{txt}{space 7}ldist {c |}{col 14}{res}{space 2}-2.498972{col 26}{space 2} .3717581{col 37}{space 1}   -6.72{col 46}{space 3}0.000{col 54}{space 4}-3.227797{col 67}{space 3}-1.770147
+{txt}{space 5}ldistsq {c |}{col 14}{res}{space 2} .2314933{col 26}{space 2} .0316459{col 37}{space 1}    7.32{col 46}{space 3}0.000{col 54}{space 4} .1694521{col 67}{space 3} .2935344
+{txt}{space 9}y98 {c |}{col 14}{res}{space 2} .0616171{col 26}{space 2} .0367093{col 37}{space 1}    1.68{col 46}{space 3}0.093{col 54}{space 4}-.0103508{col 67}{space 3} .1335851
+{txt}{space 9}y99 {c |}{col 14}{res}{space 2} .1241675{col 26}{space 2} .0371132{col 37}{space 1}    3.35{col 46}{space 3}0.001{col 54}{space 4} .0514079{col 67}{space 3} .1969272
+{txt}{space 9}y00 {c |}{col 14}{res}{space 2} .2542695{col 26}{space 2} .0418265{col 37}{space 1}    6.08{col 46}{space 3}0.000{col 54}{space 4} .1722695{col 67}{space 3} .3362696
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 21.21249{col 26}{space 2} 1.732746{col 37}{space 1}   12.24{col 46}{space 3}0.000{col 54}{space 4} 17.81547{col 67}{space 3}  24.6095
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //2SLS ivreg version
+. ivreg lpassen ldist ldistsq y98 y99 y00 (lfare=concen) 
+
+{txt}Instrumental variables (2SLS) regression
+
+      Source {c |}       SS           df       MS      Number of obs   ={res}     4,596
+{txt}{hline 13}{c +}{hline 34}   F(6, 4589)      = {res}    20.45
+{txt}       Model {c |} {res}-556.334915         6 -92.7224858   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 4147.02233     4,589  .903687586   {txt}R-squared       ={res}         .
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}         .
+{txt}       Total {c |} {res} 3590.68741     4,595  .781433605   {txt}Root MSE        =   {res} .95062
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     lpassen{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}lfare {c |}{col 14}{res}{space 2}-1.776549{col 26}{space 2} .2358788{col 37}{space 1}   -7.53{col 46}{space 3}0.000{col 54}{space 4}-2.238985{col 67}{space 3}-1.314113
+{txt}{space 7}ldist {c |}{col 14}{res}{space 2}-2.498972{col 26}{space 2} .4058371{col 37}{space 1}   -6.16{col 46}{space 3}0.000{col 54}{space 4}-3.294607{col 67}{space 3}-1.703336
+{txt}{space 5}ldistsq {c |}{col 14}{res}{space 2} .2314932{col 26}{space 2} .0345468{col 37}{space 1}    6.70{col 46}{space 3}0.000{col 54}{space 4} .1637648{col 67}{space 3} .2992216
+{txt}{space 9}y98 {c |}{col 14}{res}{space 2} .0616171{col 26}{space 2} .0400745{col 37}{space 1}    1.54{col 46}{space 3}0.124{col 54}{space 4}-.0169481{col 67}{space 3} .1401824
+{txt}{space 9}y99 {c |}{col 14}{res}{space 2} .1241675{col 26}{space 2} .0405153{col 37}{space 1}    3.06{col 46}{space 3}0.002{col 54}{space 4}  .044738{col 67}{space 3} .2035971
+{txt}{space 9}y00 {c |}{col 14}{res}{space 2} .2542695{col 26}{space 2} .0456607{col 37}{space 1}    5.57{col 46}{space 3}0.000{col 54}{space 4} .1647525{col 67}{space 3} .3437865
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 21.21249{col 26}{space 2} 1.891586{col 37}{space 1}   11.21{col 46}{space 3}0.000{col 54}{space 4} 17.50407{col 67}{space 3}  24.9209
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{p 0 15 92}Instrumented:{space 2}lfare{p_end}
+{p 0 15 92}Instruments:{space 3}ldist ldistsq y98 y99 y00 concen{p_end}
+{hline 78}
+
+{com}. 
+. //close the log file
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment5.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}30 May 2021, 20:39:00
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}

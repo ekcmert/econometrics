@@ -1,0 +1,186 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment2.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}11 Apr 2021, 20:53:38
+
+{com}. doedit "C:\Users\LENOVO\Desktop\ECON301 Assignment2 Mert Ekici.do"
+
+. do "C:\Users\LENOVO\AppData\Local\Temp\STD1974_000000.tmp"
+{txt}
+{com}. // ECON301 Assignment 2 
+. 
+. //open discrim.dta
+. use "C:\Users\LENOVO\Desktop\discrim.dta"
+{txt}
+{com}. 
+. //browse the data
+. browse
+{txt}
+{com}. 
+. //OLS estimation psoda prrblck income
+. reg psoda prpblck income
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       401
+{txt}{hline 13}{c +}{hline 34}   F(2, 398)       = {res}    13.66
+{txt}       Model {c |} {res} .202552215         2  .101276107   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.95146493       398  .007415741   {txt}R-squared       ={res}    0.0642
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0595
+{txt}       Total {c |} {res} 3.15401715       400  .007885043   {txt}Root MSE        =   {res} .08611
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       psoda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}prpblck {c |}{col 14}{res}{space 2} .1149882{col 26}{space 2} .0260006{col 37}{space 1}    4.42{col 46}{space 3}0.000{col 54}{space 4} .0638724{col 67}{space 3} .1661039
+{txt}{space 6}income {c |}{col 14}{res}{space 2} 1.60e-06{col 26}{space 2} 3.62e-07{col 37}{space 1}    4.43{col 46}{space 3}0.000{col 54}{space 4} 8.91e-07{col 67}{space 3} 2.31e-06
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .9563196{col 26}{space 2}  .018992{col 37}{space 1}   50.35{col 46}{space 3}0.000{col 54}{space 4} .9189824{col 67}{space 3} .9936568
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //change the directory
+. cd "C:\Users\LENOVO"
+{res}C:\Users\LENOVO
+{txt}
+{com}. 
+. //extract the table of the model to tables.doc
+. outreg2 using tables.doc, replace seeout
+{res}Hit Enter to continue{com}. 
+{txt}{stata `"shellout using `"tables.doc"'"':tables.doc}
+{browse `"C:\Users\LENOVO"' :dir}{com} : {txt}{stata `"seeout using "tables.txt""':seeout}
+
+{com}. 
+. //calculate difference from 0.1 t-value
+. display (0.1149882-0.1)/(0.0260006)
+{res}.57645593
+{txt}
+{com}. 
+. //Simple regression psoda prpblck
+. reg psoda prpblck
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       401
+{txt}{hline 13}{c +}{hline 34}   F(1, 399)       = {res}     7.34
+{txt}       Model {c |} {res} .057010466         1  .057010466   {txt}Prob > F        ={res}    0.0070
+{txt}    Residual {c |} {res} 3.09700668       399  .007761922   {txt}R-squared       ={res}    0.0181
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0156
+{txt}       Total {c |} {res} 3.15401715       400  .007885043   {txt}Root MSE        =   {res}  .0881
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       psoda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}prpblck {c |}{col 14}{res}{space 2} .0649269{col 26}{space 2}  .023957{col 37}{space 1}    2.71{col 46}{space 3}0.007{col 54}{space 4} .0178292{col 67}{space 3} .1120245
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 1.037399{col 26}{space 2} .0051905{col 37}{space 1}  199.87{col 46}{space 3}0.000{col 54}{space 4} 1.027195{col 67}{space 3} 1.047603
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //estimate the correlation coefficient of prpblck and income
+. corr prpblck income
+{txt}(obs=409)
+
+             {c |}  prpblck   income
+{hline 13}{c +}{hline 18}
+     prpblck {c |}{res}   1.0000
+      {txt}income {c |}{res}  -0.4335   1.0000
+
+{txt}
+{com}. 
+. //multi regression income elasticity
+. reg lpsoda lincome prpblck
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       401
+{txt}{hline 13}{c +}{hline 34}   F(2, 398)       = {res}    14.54
+{txt}       Model {c |} {res} .196020672         2  .098010336   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.68272938       398  .006740526   {txt}R-squared       ={res}    0.0681
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0634
+{txt}       Total {c |} {res} 2.87875005       400  .007196875   {txt}Root MSE        =   {res}  .0821
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      lpsoda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}lincome {c |}{col 14}{res}{space 2} .0765114{col 26}{space 2} .0165969{col 37}{space 1}    4.61{col 46}{space 3}0.000{col 54}{space 4} .0438829{col 67}{space 3} .1091399
+{txt}{space 5}prpblck {c |}{col 14}{res}{space 2} .1215803{col 26}{space 2} .0257457{col 37}{space 1}    4.72{col 46}{space 3}0.000{col 54}{space 4} .0709657{col 67}{space 3} .1721948
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} -.793768{col 26}{space 2} .1794337{col 37}{space 1}   -4.42{col 46}{space 3}0.000{col 54}{space 4}-1.146524{col 67}{space 3}-.4410117
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //multiple regression prppov is added
+. reg psoda prpblck income prppov
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       401
+{txt}{hline 13}{c +}{hline 34}   F(3, 397)       = {res}     9.76
+{txt}       Model {c |} {res}  .21672761         3  .072242537   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 2.93728954       397  .007398714   {txt}R-squared       ={res}    0.0687
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.0617
+{txt}       Total {c |} {res} 3.15401715       400  .007885043   {txt}Root MSE        =   {res} .08602
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       psoda{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 5}prpblck {c |}{col 14}{res}{space 2} .0888819{col 26}{space 2} .0320968{col 37}{space 1}    2.77{col 46}{space 3}0.006{col 54}{space 4} .0257811{col 67}{space 3} .1519828
+{txt}{space 6}income {c |}{col 14}{res}{space 2} 2.03e-06{col 26}{space 2} 4.76e-07{col 37}{space 1}    4.27{col 46}{space 3}0.000{col 54}{space 4} 1.10e-06{col 67}{space 3} 2.97e-06
+{txt}{space 6}prppov {c |}{col 14}{res}{space 2}  .157464{col 26}{space 2} .1137606{col 37}{space 1}    1.38{col 46}{space 3}0.167{col 54}{space 4}-.0661844{col 67}{space 3} .3811124
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} .9278289{col 26}{space 2} .0279918{col 37}{space 1}   33.15{col 46}{space 3}0.000{col 54}{space 4} .8727983{col 67}{space 3} .9828595
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //correlation income prppov
+. corr income prppov
+{txt}(obs=409)
+
+             {c |}   income   prppov
+{hline 13}{c +}{hline 18}
+      income {c |}{res}   1.0000
+      {txt}prppov {c |}{res}  -0.7250   1.0000
+
+{txt}
+{com}. 
+. //open VOTE1.dta
+. use "C:\Users\LENOVO\Desktop\VOTE1.DTA"
+{txt}
+{com}. 
+. //generate log expendA and log expendB
+. g lnexpendA = ln(expendA)
+{txt}
+{com}. g lnexpendB = ln(expendB)
+{txt}
+{com}. 
+. //multi regression
+. reg voteA lnexpendA lnexpendB prtystrA
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       173
+{txt}{hline 13}{c +}{hline 34}   F(3, 169)       = {res}   215.23
+{txt}       Model {c |} {res} 38405.1096         3  12801.7032   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 10052.1389       169   59.480112   {txt}R-squared       ={res}    0.7926
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.7889
+{txt}       Total {c |} {res} 48457.2486       172  281.728189   {txt}Root MSE        =   {res} 7.7123
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       voteA{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 3}lnexpendA {c |}{col 14}{res}{space 2} 6.083316{col 26}{space 2}   .38215{col 37}{space 1}   15.92{col 46}{space 3}0.000{col 54}{space 4} 5.328914{col 67}{space 3} 6.837719
+{txt}{space 3}lnexpendB {c |}{col 14}{res}{space 2}-6.615417{col 26}{space 2} .3788203{col 37}{space 1}  -17.46{col 46}{space 3}0.000{col 54}{space 4}-7.363246{col 67}{space 3}-5.867588
+{txt}{space 4}prtystrA {c |}{col 14}{res}{space 2} .1519574{col 26}{space 2} .0620181{col 37}{space 1}    2.45{col 46}{space 3}0.015{col 54}{space 4} .0295274{col 67}{space 3} .2743873
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 45.07893{col 26}{space 2} 3.926305{col 37}{space 1}   11.48{col 46}{space 3}0.000{col 54}{space 4} 37.32801{col 67}{space 3} 52.82985
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //correlation lnexpendA voteA
+. corr voteA lnexpendA
+{txt}(obs=173)
+
+             {c |}    voteA lnexpe~A
+{hline 13}{c +}{hline 18}
+       voteA {c |}{res}   1.0000
+   {txt}lnexpendA {c |}{res}   0.6208   1.0000
+
+{txt}
+{com}. 
+. //close log
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Mert Ekici 26772 ECON301 Assignment2.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}11 Apr 2021, 20:54:07
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
