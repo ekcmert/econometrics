@@ -1,0 +1,211 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Econ323 Assignment3 Mert Ekici 26772.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res} 9 May 2021, 17:02:15
+
+{com}. doedit "C:\Users\LENOVO\Desktop\Econ323 Assignment3 Mert Ekici 26772.do"
+
+. do "C:\Users\LENOVO\AppData\Local\Temp\STD3a50_000000.tmp"
+{txt}
+{com}. //open curse.dta
+. use "C:\Users\LENOVO\Desktop\Resource curse.dta"
+{txt}
+{com}. 
+. //browse the data
+. browse
+{txt}
+{com}. 
+. //table 1 regression models (gradually controlling external factors)
+. reg gea7090 lgdpea70 sxp if country != "CHAD" & country != "GABON" & country != "GUYANA" & country !=  "MALAYSIA" & excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        87
+{txt}{hline 13}{c +}{hline 34}   F(2, 84)        = {res}    11.70
+{txt}       Model {c |} {res} 61.4354755         2  30.7177377   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 220.519863        84  2.62523646   {txt}R-squared       ={res}    0.2179
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.1993
+{txt}       Total {c |} {res} 281.955338        86  3.27855045   {txt}Root MSE        =   {res} 1.6203
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2}-.1106366{col 26}{space 2} .2030623{col 37}{space 1}   -0.54{col 46}{space 3}0.587{col 54}{space 4}-.5144483{col 67}{space 3} .2931751
+{txt}{space 9}sxp {c |}{col 14}{res}{space 2}-9.433996{col 26}{space 2} 1.988373{col 37}{space 1}   -4.74{col 46}{space 3}0.000{col 54}{space 4}-13.38809{col 67}{space 3}-5.479899
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 3.285748{col 26}{space 2} 1.784952{col 37}{space 1}    1.84{col 46}{space 3}0.069{col 54}{space 4}-.2638241{col 67}{space 3}  6.83532
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg gea7090 lgdpea70 sxp sopen if country != "CHAD" & country != "GABON" & country != "GUYANA" & country !=  "MALAYSIA" & excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        87
+{txt}{hline 13}{c +}{hline 34}   F(3, 83)        = {res}    35.34
+{txt}       Model {c |} {res} 158.153898         3  52.7179659   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 123.801441        83  1.49158362   {txt}R-squared       ={res}    0.5609
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.5450
+{txt}       Total {c |} {res} 281.955338        86  3.27855045   {txt}Root MSE        =   {res} 1.2213
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2} -.958065{col 26}{space 2} .1857503{col 37}{space 1}   -5.16{col 46}{space 3}0.000{col 54}{space 4}-1.327515{col 67}{space 3}-.5886151
+{txt}{space 9}sxp {c |}{col 14}{res}{space 2}-6.955453{col 26}{space 2} 1.530058{col 37}{space 1}   -4.55{col 46}{space 3}0.000{col 54}{space 4}-9.998676{col 67}{space 3} -3.91223
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 3.059385{col 26}{space 2} .3799298{col 37}{space 1}    8.05{col 46}{space 3}0.000{col 54}{space 4}  2.30372{col 67}{space 3}  3.81505
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 8.868615{col 26}{space 2} 1.513572{col 37}{space 1}    5.86{col 46}{space 3}0.000{col 54}{space 4} 5.858182{col 67}{space 3} 11.87905
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg gea7090 lgdpea70 sxp sopen linv7089 if country != "CHAD" & country != "GABON" & country != "GUYANA" & country !=  "MALAYSIA" & excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        87
+{txt}{hline 13}{c +}{hline 34}   F(4, 82)        = {res}    44.25
+{txt}       Model {c |} {res} 192.684559         4  48.1711397   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 89.2707794        82  1.08866804   {txt}R-squared       ={res}    0.6834
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6679
+{txt}       Total {c |} {res} 281.955338        86  3.27855045   {txt}Root MSE        =   {res} 1.0434
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2}-1.342321{col 26}{space 2}  .172737{col 37}{space 1}   -7.77{col 46}{space 3}0.000{col 54}{space 4} -1.68595{col 67}{space 3}-.9986916
+{txt}{space 9}sxp {c |}{col 14}{res}{space 2} -7.29349{col 26}{space 2} 1.308546{col 37}{space 1}   -5.57{col 46}{space 3}0.000{col 54}{space 4}-9.896605{col 67}{space 3}-4.690375
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 2.424366{col 26}{space 2} .3436107{col 37}{space 1}    7.06{col 46}{space 3}0.000{col 54}{space 4} 1.740815{col 67}{space 3} 3.107918
+{txt}{space 4}linv7089 {c |}{col 14}{res}{space 2} 1.245189{col 26}{space 2} .2210958{col 37}{space 1}    5.63{col 46}{space 3}0.000{col 54}{space 4}  .805359{col 67}{space 3} 1.685019
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 9.034998{col 26}{space 2} 1.293422{col 37}{space 1}    6.99{col 46}{space 3}0.000{col 54}{space 4} 6.461969{col 67}{space 3} 11.60803
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg gea7090 lgdpea70 sxp sopen linv7089 rl if country != "CHAD" & country != "GABON" & country != "GUYANA" & country !=  "MALAYSIA" & excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        71
+{txt}{hline 13}{c +}{hline 34}   F(5, 65)        = {res}    37.63
+{txt}       Model {c |} {res} 164.102564         5  32.8205129   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 56.6931968        65  .872203027   {txt}R-squared       ={res}    0.7432
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.7235
+{txt}       Total {c |} {res} 220.795761        70  3.15422516   {txt}Root MSE        =   {res} .93392
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2} -1.76092{col 26}{space 2} .2058108{col 37}{space 1}   -8.56{col 46}{space 3}0.000{col 54}{space 4}-2.171953{col 67}{space 3}-1.349887
+{txt}{space 9}sxp {c |}{col 14}{res}{space 2}-10.56558{col 26}{space 2} 1.507216{col 37}{space 1}   -7.01{col 46}{space 3}0.000{col 54}{space 4} -13.5757{col 67}{space 3}-7.555466
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 1.328599{col 26}{space 2} .3971787{col 37}{space 1}    3.35{col 46}{space 3}0.001{col 54}{space 4} .5353787{col 67}{space 3}  2.12182
+{txt}{space 4}linv7089 {c |}{col 14}{res}{space 2} 1.016553{col 26}{space 2} .2948859{col 37}{space 1}    3.45{col 46}{space 3}0.001{col 54}{space 4} .4276256{col 67}{space 3} 1.605481
+{txt}{space 10}rl {c |}{col 14}{res}{space 2} .3580402{col 26}{space 2} .1012152{col 37}{space 1}    3.54{col 46}{space 3}0.001{col 54}{space 4} .1558995{col 67}{space 3} .5601809
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 12.90481{col 26}{space 2} 1.598241{col 37}{space 1}    8.07{col 46}{space 3}0.000{col 54}{space 4} 9.712903{col 67}{space 3} 16.09672
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg gea7090 lgdpea70 sxp sopen linv7089 rl dtt7090 if country != "CHAD" & country != "GABON" & country != "GUYANA" & country !=  "MALAYSIA" & excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        71
+{txt}{hline 13}{c +}{hline 34}   F(6, 64)        = {res}    33.09
+{txt}       Model {c |} {res} 166.977632         6  27.8296053   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 53.8181293        64  .840908271   {txt}R-squared       ={res}    0.7563
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.7334
+{txt}       Total {c |} {res} 220.795761        70  3.15422516   {txt}Root MSE        =   {res} .91701
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2}-1.785918{col 26}{space 2} .2025365{col 37}{space 1}   -8.82{col 46}{space 3}0.000{col 54}{space 4}-2.190532{col 67}{space 3}-1.381305
+{txt}{space 9}sxp {c |}{col 14}{res}{space 2}-10.26439{col 26}{space 2} 1.488867{col 37}{space 1}   -6.89{col 46}{space 3}0.000{col 54}{space 4}-13.23875{col 67}{space 3} -7.29004
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 1.339819{col 26}{space 2} .3900354{col 37}{space 1}    3.44{col 46}{space 3}0.001{col 54}{space 4} .5606338{col 67}{space 3} 2.119004
+{txt}{space 4}linv7089 {c |}{col 14}{res}{space 2} .8139494{col 26}{space 2} .3095861{col 37}{space 1}    2.63{col 46}{space 3}0.011{col 54}{space 4}   .19548{col 67}{space 3} 1.432419
+{txt}{space 10}rl {c |}{col 14}{res}{space 2} .4039764{col 26}{space 2} .1024408{col 37}{space 1}    3.94{col 46}{space 3}0.000{col 54}{space 4} .1993273{col 67}{space 3} .6086255
+{txt}{space 5}dtt7090 {c |}{col 14}{res}{space 2} .0864237{col 26}{space 2} .0467394{col 37}{space 1}    1.85{col 46}{space 3}0.069{col 54}{space 4} -.006949{col 67}{space 3} .1797964
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 13.52475{col 26}{space 2} 1.604721{col 37}{space 1}    8.43{col 46}{space 3}0.000{col 54}{space 4} 10.31895{col 67}{space 3} 16.73055
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //table 3 regs (replacing the natural resource intensity measurements)
+. reg gea7090 lgdpea70 sopen rl dtt7090 linv7089 sxp if excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(6, 67)        = {res}    33.65
+{txt}       Model {c |} {res} 189.347632         6  31.5579386   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 62.8321801        67  .937793732   {txt}R-squared       ={res}    0.7508
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.7285
+{txt}       Total {c |} {res} 252.179812        73  3.45451797   {txt}Root MSE        =   {res}  .9684
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2}-1.801753{col 26}{space 2} .2097784{col 37}{space 1}   -8.59{col 46}{space 3}0.000{col 54}{space 4}-2.220472{col 67}{space 3}-1.383033
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 1.569196{col 26}{space 2} .3958942{col 37}{space 1}    3.96{col 46}{space 3}0.000{col 54}{space 4} .7789878{col 67}{space 3} 2.359404
+{txt}{space 10}rl {c |}{col 14}{res}{space 2}  .402448{col 26}{space 2} .1047762{col 37}{space 1}    3.84{col 46}{space 3}0.000{col 54}{space 4} .1933138{col 67}{space 3} .6115821
+{txt}{space 5}dtt7090 {c |}{col 14}{res}{space 2} .1129698{col 26}{space 2} .0463898{col 37}{space 1}    2.44{col 46}{space 3}0.018{col 54}{space 4} .0203753{col 67}{space 3} .2055642
+{txt}{space 4}linv7089 {c |}{col 14}{res}{space 2} .8476515{col 26}{space 2} .3226661{col 37}{space 1}    2.63{col 46}{space 3}0.011{col 54}{space 4} .2036074{col 67}{space 3} 1.491696
+{txt}{space 9}sxp {c |}{col 14}{res}{space 2}-8.283757{col 26}{space 2} 1.242212{col 37}{space 1}   -6.67{col 46}{space 3}0.000{col 54}{space 4}-10.76322{col 67}{space 3}-5.804291
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 13.30097{col 26}{space 2} 1.619978{col 37}{space 1}    8.21{col 46}{space 3}0.000{col 54}{space 4} 10.06748{col 67}{space 3} 16.53446
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg gea7090 lgdpea70 sopen rl dtt7090 linv7089 snr if excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(6, 67)        = {res}    22.05
+{txt}       Model {c |} {res} 167.411604         6   27.901934   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 84.7682077        67  1.26519713   {txt}R-squared       ={res}    0.6639
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6338
+{txt}       Total {c |} {res} 252.179812        73  3.45451797   {txt}Root MSE        =   {res} 1.1248
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2}-1.585415{col 26}{space 2} .2421845{col 37}{space 1}   -6.55{col 46}{space 3}0.000{col 54}{space 4}-2.068817{col 67}{space 3}-1.102013
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 1.539343{col 26}{space 2} .4710317{col 37}{space 1}    3.27{col 46}{space 3}0.002{col 54}{space 4}   .59916{col 67}{space 3} 2.479526
+{txt}{space 10}rl {c |}{col 14}{res}{space 2} .4456557{col 26}{space 2} .1212585{col 37}{space 1}    3.68{col 46}{space 3}0.000{col 54}{space 4} .2036228{col 67}{space 3} .6876887
+{txt}{space 5}dtt7090 {c |}{col 14}{res}{space 2} .2191641{col 26}{space 2} .0573649{col 37}{space 1}    3.82{col 46}{space 3}0.000{col 54}{space 4} .1046632{col 67}{space 3}  .333665
+{txt}{space 4}linv7089 {c |}{col 14}{res}{space 2} .7424563{col 26}{space 2} .3757436{col 37}{space 1}    1.98{col 46}{space 3}0.052{col 54}{space 4}-.0075311{col 67}{space 3} 1.492444
+{txt}{space 9}snr {c |}{col 14}{res}{space 2}-6.448635{col 26}{space 2} 1.631449{col 37}{space 1}   -3.95{col 46}{space 3}0.000{col 54}{space 4}-9.705021{col 67}{space 3} -3.19225
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 11.02223{col 26}{space 2} 1.859714{col 37}{space 1}    5.93{col 46}{space 3}0.000{col 54}{space 4} 7.310226{col 67}{space 3} 14.73424
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg gea7090 lgdpea70 sopen rl dtt7090 linv7089 pxi70 if excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        73
+{txt}{hline 13}{c +}{hline 34}   F(6, 66)        = {res}    21.39
+{txt}       Model {c |} {res} 165.349805         6  27.5583009   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 85.0441961        66  1.28854843   {txt}R-squared       ={res}    0.6604
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6295
+{txt}       Total {c |} {res} 250.394001        72  3.47769446   {txt}Root MSE        =   {res} 1.1351
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2}-1.794101{col 26}{space 2} .2476914{col 37}{space 1}   -7.24{col 46}{space 3}0.000{col 54}{space 4}-2.288633{col 67}{space 3}-1.299569
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 1.359281{col 26}{space 2}  .491357{col 37}{space 1}    2.77{col 46}{space 3}0.007{col 54}{space 4} .3782554{col 67}{space 3} 2.340307
+{txt}{space 10}rl {c |}{col 14}{res}{space 2} .3536291{col 26}{space 2} .1271413{col 37}{space 1}    2.78{col 46}{space 3}0.007{col 54}{space 4} .0997832{col 67}{space 3}  .607475
+{txt}{space 5}dtt7090 {c |}{col 14}{res}{space 2} .1565093{col 26}{space 2} .0553827{col 37}{space 1}    2.83{col 46}{space 3}0.006{col 54}{space 4} .0459341{col 67}{space 3} .2670845
+{txt}{space 4}linv7089 {c |}{col 14}{res}{space 2} .6464717{col 26}{space 2} .3790713{col 37}{space 1}    1.71{col 46}{space 3}0.093{col 54}{space 4}-.1103686{col 67}{space 3} 1.403312
+{txt}{space 7}pxi70 {c |}{col 14}{res}{space 2}-2.496529{col 26}{space 2} .6420866{col 37}{space 1}   -3.89{col 46}{space 3}0.000{col 54}{space 4}-3.778496{col 67}{space 3}-1.214561
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 14.75855{col 26}{space 2} 2.051023{col 37}{space 1}    7.20{col 46}{space 3}0.000{col 54}{space 4} 10.66355{col 67}{space 3} 18.85355
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. reg gea7090 lgdpea70 sopen rl dtt7090 linv7089 land if excl1 == 0
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}        74
+{txt}{hline 13}{c +}{hline 34}   F(6, 67)        = {res}    22.47
+{txt}       Model {c |} {res} 168.450366         6   28.075061   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 83.7294455        67  1.24969322   {txt}R-squared       ={res}    0.6680
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.6382
+{txt}       Total {c |} {res} 252.179812        73  3.45451797   {txt}Root MSE        =   {res} 1.1179
+
+{txt}{hline 13}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}     gea7090{col 14}{c |}      Coef.{col 26}   Std. Err.{col 38}      t{col 46}   P>|t|{col 54}     [95% Con{col 67}f. Interval]
+{hline 13}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 4}lgdpea70 {c |}{col 14}{res}{space 2}-1.411836{col 26}{space 2} .2464374{col 37}{space 1}   -5.73{col 46}{space 3}0.000{col 54}{space 4}-1.903727{col 67}{space 3}-.9199447
+{txt}{space 7}sopen {c |}{col 14}{res}{space 2} 1.490796{col 26}{space 2} .4706377{col 37}{space 1}    3.17{col 46}{space 3}0.002{col 54}{space 4} .5513994{col 67}{space 3} 2.430193
+{txt}{space 10}rl {c |}{col 14}{res}{space 2} .4186158{col 26}{space 2} .1212495{col 37}{space 1}    3.45{col 46}{space 3}0.001{col 54}{space 4} .1766007{col 67}{space 3} .6606308
+{txt}{space 5}dtt7090 {c |}{col 14}{res}{space 2} .1362278{col 26}{space 2} .0533626{col 37}{space 1}    2.55{col 46}{space 3}0.013{col 54}{space 4} .0297157{col 67}{space 3} .2427399
+{txt}{space 4}linv7089 {c |}{col 14}{res}{space 2} .6229666{col 26}{space 2} .3684955{col 37}{space 1}    1.69{col 46}{space 3}0.096{col 54}{space 4}-.1125536{col 67}{space 3} 1.358487
+{txt}{space 8}land {c |}{col 14}{res}{space 2}-.3913322{col 26}{space 2} .0959075{col 37}{space 1}   -4.08{col 46}{space 3}0.000{col 54}{space 4}-.5827643{col 67}{space 3}   -.1999
+{txt}{space 7}_cons {c |}{col 14}{res}{space 2} 9.480734{col 26}{space 2} 1.910115{col 37}{space 1}    4.96{col 46}{space 3}0.000{col 54}{space 4} 5.668129{col 67}{space 3} 13.29334
+{txt}{hline 13}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}{txt}
+{com}. 
+. //close log file
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\LENOVO\Desktop\Econ323 Assignment3 Mert Ekici 26772.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res} 9 May 2021, 17:02:22
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
